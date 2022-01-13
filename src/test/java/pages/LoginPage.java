@@ -10,7 +10,6 @@ public class LoginPage extends BasePage {
     private static final By EMAIL_INPUT = By.id("login_name");
     private static final By PASSWORD_INPUT = By.id("login_password");
     private static final By LOGIN_BUTTON = By.xpath("//button[text()='Login']");
-    private static final By LOGOTYPE_IMG = By.cssSelector(".logo");
     private static final By ACCOUNT_LOGOUT_MESSAGE = By.cssSelector("[class^='alert']");
 
 
@@ -20,7 +19,7 @@ public class LoginPage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        return driver.findElement(LOGOTYPE_IMG).isDisplayed();
+        return driver.findElement(LOGIN_BUTTON).isDisplayed();
     }
 
     @Override
