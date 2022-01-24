@@ -1,8 +1,8 @@
 package tests;
 
 import modals.AddNewWorkoutModal;
-import modals.UpdateWorkoutModal;
 import models.Workout;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.WorkoutAddPage;
@@ -17,15 +17,19 @@ public class AddWorkoutTest extends BaseTest{
     protected WorkoutAddPage workoutAddPage;
     protected WorkoutDetailsPage workoutDetailsPage;
     protected AddNewWorkoutModal addNewWorkoutModal;
-    protected UpdateWorkoutModal updateWorkoutModal;
 
-    @BeforeMethod
+
+    @BeforeMethod(alwaysRun = true)
     public void navigate (){
         loginPage.open().login(EMAIL,PASSWORD);
         workoutAddPage = new WorkoutAddPage(driver);
         workoutDetailsPage = new WorkoutDetailsPage(driver);
         addNewWorkoutModal = new AddNewWorkoutModal(driver);
-        updateWorkoutModal = new UpdateWorkoutModal(driver);
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void clearSession() {
+        driver.manage().deleteAllCookies();
     }
 
     @Test
@@ -37,9 +41,6 @@ public class AddWorkoutTest extends BaseTest{
         addNewWorkoutModal.fillForm(crossTraining)
                 .clickAddWorkoutButton();
         Workout actualWorkoutDetails = workoutDetailsPage.getWorkoutDetails();
-        assertEquals (crossTraining,actualWorkoutDetails);
-        workoutDetailsPage.clickWorkoutEditLink()
-                .clickDeleteButton()
-                .clickOkButton();
+        assertEquals (actualWorkoutDetails,crossTraining);
     }
 }

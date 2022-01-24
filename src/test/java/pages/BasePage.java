@@ -1,13 +1,13 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage {
 
     protected static final String BASE_URl = "https://log.finalsurge.com";
     WebDriver driver;
-    WebDriverWait wait;
+
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -17,5 +17,11 @@ public abstract class BasePage {
 
     public abstract BasePage open();
 
+    public boolean elementIsVisible(By locator) {
+        return driver.findElement(locator).isDisplayed();
+    }
 
+    public void clickButton(By locator) {
+        driver.findElement(locator).click();
+    }
 }

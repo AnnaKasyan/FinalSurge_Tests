@@ -4,10 +4,12 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class BaseElement {
 
-    WebDriver driver;
+    static WebDriver driver;
 
     public BaseElement(WebDriver driver) {
-        this.driver = driver;
+        BaseElement.driver = driver;
     }
+
+
 
 }

@@ -17,32 +17,19 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    @Override
-    public boolean isPageOpened() {
-        return driver.findElement(LOGIN_BUTTON).isDisplayed();
-    }
-
-    @Override
-    public LoginPage open() {
-        driver.get(BASE_URl);
-        return this;
-    }
-
-    public LoginPage setEmailInput(String email) {
+    public void setEmailInput(String email) {
         log.info("setting email");
         driver.findElement(EMAIL_INPUT).sendKeys(email);
-        return this;
     }
 
-    public LoginPage setPasswordInput(String password) {
+    public void setPasswordInput(String password) {
         log.info("setting password");
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
-        return this;
     }
 
     public void clickLoginButton() {
         log.info("clicking 'Login' button");
-        driver.findElement(LOGIN_BUTTON).click();
+        clickButton(LOGIN_BUTTON);
     }
 
     public void login(String email, String password) {
@@ -54,5 +41,16 @@ public class LoginPage extends BasePage {
     public String getLogoutMessage() {
         log.info("getting message about successfully logged out of the system");
         return driver.findElement(ACCOUNT_LOGOUT_MESSAGE).getText();
+    }
+
+    @Override
+    public boolean isPageOpened() {
+        return elementIsVisible(LOGIN_BUTTON);
+    }
+
+    @Override
+    public LoginPage open() {
+        driver.get(BASE_URl);
+        return this;
     }
 }

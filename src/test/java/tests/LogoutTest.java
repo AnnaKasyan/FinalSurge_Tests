@@ -7,7 +7,7 @@ import static org.testng.Assert.assertEquals;
 
 public class LogoutTest extends BaseTest{
 
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public void navigate (){
         loginPage.open().login(EMAIL,PASSWORD);
     }

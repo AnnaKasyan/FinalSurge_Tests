@@ -5,7 +5,6 @@ import enums.Feeling;
 import enums.PaceType;
 import enums.PerceivedEffort;
 import lombok.extern.log4j.Log4j2;
-import modals.UpdateWorkoutModal;
 import models.Workout;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,14 +13,10 @@ import org.openqa.selenium.WebDriver;
 public class WorkoutDetailsPage extends BasePage {
 
     private static final By SHARE_LINK = By.cssSelector("[data-target='#ShareDiv']");
-    private static final By WORKOUT_EDIT_LINK = By.id("WorkoutEditLink");
     private static final By ACTUAL_TIME = By.xpath("//div[@class='formSep']/div/small");
     private static final By ACTUAL_NAME = By.xpath("//span[@class='activityTypeName']/parent::div/following-sibling::div");
     private static final By ACTUAL_DESCRIPTION = By.xpath("//small[contains(text(),'Description:')]/ancestor::p");
     private static final By ACTUAL_DISTANCE_AND_DURATION = By.xpath("//small[text()='Workout Statistics:']/following-sibling::span[@class='label label-info']");
-    private static final By ACTUAL_MIN_HR = By.xpath("//small[text()='Min HR:']/following-sibling::text()[1]");  //is: [object Text]. It should be an element
-    private static final By ACTUAL_AVG_HR = By.xpath("//small[text()='Avg HR:']/following-sibling::text()[1]");  // is: [object Text]. It should be an element
-    private static final By ACTUAL_MAX_HR = By.xpath("//small[text()='Max HR:']/following-sibling::text()[1]");  // is: [object Text]. It should be an element
     private static final By ACTUAL_HR = By.xpath("//p[@class='formSep']");
     private static final By ACTUAL_CALORIES = By.xpath("//p[@class='formSep']/span");
     private static final By ACTUAL_PACE_TYPE = By.xpath("//small[text()='Workout Statistics:']/following-sibling::span[@class='label label']");
@@ -36,36 +31,37 @@ public class WorkoutDetailsPage extends BasePage {
         Workout workout = new Workout();
         workout.setTimeOfDay(getActualTime());
         log.info("getting the actual name of workout");
-        workout.setName(getText(ACTUAL_NAME));
-        log.info("getting the actual description of workout");
-        workout.setDescription(getText(ACTUAL_DESCRIPTION));
+        workout.setName(getActualName());
+        workout.setDescription(getDescription());
         workout.setDistance(getActualDistance());
         workout.setDuration(getActualDuration());
         log.info("getting the actual avg HR");
         workout.setAvgHR(getActualAvgHR());
-//        workout.setAvgHR(getActualHR(ACTUAL_AVG_HR));
         log.info("getting the actual min HR");
         workout.setMinHR(getActualMinHR());
-//        workout.setMinHR(getActualHR(ACTUAL_MIN_HR));
         log.info("getting the actual max HR");
         workout.setMaxHR(getActualMaxHR());
-//        workout.setMaxHR(getActualHR(ACTUAL_MAX_HR));
         workout.setCaloriesBurned(getActualCalories());
         workout.setDistanceType(DistanceType.fromString(getActualDistanceType()));
         workout.setPaceType(PaceType.fromString(getActualPaceType()));
-        log.info("getting the actual perceived effort of workout");
-        workout.setPerceivedEffort(PerceivedEffort.fromString(getText(ACTUAL_PERCEIVED_EFFORT)));
-        workout.setFeeling(Feeling.fromString(getText(ACTUAL_FEELING)));
+        workout.setPerceivedEffort(PerceivedEffort.fromString(getActualPerceivedEffort()));
+        workout.setFeeling(Feeling.fromString(getActualFeeling()));
         return workout;
     }
 
-    public String getText(By locator) {
-        return driver.findElement(locator).getText().trim();
+    public String getActualName() {
+        log.info("getting the actual name of workout");
+        return driver.findElement(ACTUAL_NAME).getText().trim();
     }
 
     public String getActualTime() {
         log.info("getting the actual time of workout");
         return driver.findElement(ACTUAL_TIME).getText().split("-")[1].trim();
+    }
+
+    public String getDescription() {
+        log.info("getting the actual description of workout");
+       return driver.findElement(ACTUAL_DESCRIPTION).getText().split(":")[1].trim();
     }
 
     public String getActualDistance() {
@@ -83,10 +79,6 @@ public class WorkoutDetailsPage extends BasePage {
         return driver.findElement(ACTUAL_DISTANCE_AND_DURATION).getText().split("~")[1].trim();
     }
 
-    public String getActualHR(By locator) {
-        return driver.findElement(locator).getText().split(" ")[0].trim();
-    }
-
     public String getActualCalories() {
         log.info("getting the actual calories burned");
         return driver.findElement(ACTUAL_CALORIES).getText().split(" ")[2].trim();
@@ -97,11 +89,16 @@ public class WorkoutDetailsPage extends BasePage {
         return driver.findElement(ACTUAL_PACE_TYPE).getText().split(" ")[1].trim();
     }
 
-    public UpdateWorkoutModal clickWorkoutEditLink() {
-        log.info("clicking 'Workout Edit' link");
-        driver.findElement(WORKOUT_EDIT_LINK).click();
-        return new UpdateWorkoutModal(driver);
+    public String getActualPerceivedEffort() {
+        log.info("getting the actual perceived effort of workout");
+        return driver.findElement(ACTUAL_PERCEIVED_EFFORT).getText().split("rt")[1].trim();
     }
+
+    public String getActualFeeling() {
+        log.info("getting the actual name of workout");
+        return driver.findElement(ACTUAL_FEELING).getText().trim();
+    }
+
 
     public String getActualMinHR() {
         return driver.findElement(ACTUAL_HR).getText().split(" ")[2].trim();
@@ -117,7 +114,7 @@ public class WorkoutDetailsPage extends BasePage {
 
     @Override
     public boolean isPageOpened() {
-        return driver.findElement(SHARE_LINK).isDisplayed();
+        return elementIsVisible(SHARE_LINK);
     }
 
     @Override

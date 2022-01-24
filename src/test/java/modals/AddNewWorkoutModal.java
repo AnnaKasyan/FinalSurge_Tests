@@ -1,11 +1,12 @@
 package modals;
 
+import elements.DropdownSelectByValue;
+import elements.Input;
 import elements.RadioButton;
 import lombok.extern.log4j.Log4j2;
 import models.Workout;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
 
 @Log4j2
 public class AddNewWorkoutModal extends BaseModal {
@@ -29,36 +30,27 @@ public class AddNewWorkoutModal extends BaseModal {
         super(driver);
     }
 
-    public void write(By locator, String text) {
-        log.info(String.format("setting %s", text));
-        driver.findElement(locator).sendKeys(text);
-    }
-
-    public void selectOption(By locator, String optionName) {
-        log.info(String.format("selecting option %s", optionName));
-        Select select = new Select(driver.findElement(locator));
-        select.selectByValue(optionName);
-    }
 
     public AddNewWorkoutModal fillForm(Workout workout) {
-        write(TIME, workout.getTimeOfDay());
-        write(NAME, workout.getName());
-        write(DESCRIPTION, workout.getDescription());
-        write(DISTANCE, workout.getDistance());
-        selectOption(DISTANCE_TYPE_SELECT, workout.getDistanceType().getValue());
-        write(DURATION, workout.getDuration());
-        selectOption(PACE_TYPE_SELECT, workout.getPaceType().getValue());
+        new Input(driver).write(TIME, workout.getTimeOfDay());
+        new Input(driver).write(NAME, workout.getName());
+        new Input(driver).write(DESCRIPTION, workout.getDescription());
+        new Input(driver).write(DISTANCE, workout.getDistance());
+        new DropdownSelectByValue(driver).selectOption(DISTANCE_TYPE_SELECT, workout.getDistanceType().getValue());
+        new Input(driver).write(DURATION, workout.getDuration());
+        new DropdownSelectByValue(driver).selectOption(PACE_TYPE_SELECT, workout.getPaceType().getValue());
         new RadioButton(driver).clickRadioButton(workout.getFeeling().getName());
-        selectOption(PERCEIVED_EFFORT_SELECT, workout.getPerceivedEffort().getValue());
-        write(MIN_HR, workout.getMinHR());
-        write(AVG_HR, workout.getAvgHR());
-        write(MAX_HR, workout.getMaxHR());
-        write(CALORIES_BURNED, workout.getCaloriesBurned());
+        new RadioButton(driver).clickRadioButton(workout.getFeeling().getName());
+        new DropdownSelectByValue(driver).selectOption(PERCEIVED_EFFORT_SELECT, workout.getPerceivedEffort().getValue());
+        new Input(driver).write(MIN_HR, workout.getMinHR());
+        new Input(driver).write(AVG_HR, workout.getAvgHR());
+        new Input(driver).write(MAX_HR, workout.getMaxHR());
+        new Input(driver).write(CALORIES_BURNED, workout.getCaloriesBurned());
         return this;
     }
 
     public void clickAddWorkoutButton() {
         log.info("clicking 'Add Workout' button");
-        driver.findElement(ADD_WORKOUT_BUTTON).click();
+        clickButton(ADD_WORKOUT_BUTTON);
     }
 }

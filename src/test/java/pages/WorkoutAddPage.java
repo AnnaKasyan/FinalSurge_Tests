@@ -15,19 +15,19 @@ public class WorkoutAddPage extends BasePage{
         super(driver);
     }
 
+    public void selectCrossTrainingType() {
+        log.info("selecting 'CROSS_TRAINING' type");
+        clickButton(CROSS_TRAINING_TYPE);
+    }
+
     @Override
     public boolean isPageOpened() {
-        return driver.findElement(ADD_WORKOUT_FORM).isDisplayed();
+        return elementIsVisible(ADD_WORKOUT_FORM);
     }
 
     @Override
     public WorkoutAddPage open() {
         driver.get(BASE_URl+"/WorkoutAdd.cshtml");
         return this;
-    }
-
-    public void selectCrossTrainingType() {
-        log.info("selecting 'CROSS_TRAINING' type");
-        driver.findElement(CROSS_TRAINING_TYPE).click();
     }
 }
