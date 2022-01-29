@@ -1,10 +1,10 @@
 package modals;
 
+import enums.BikeBrand;
 import lombok.extern.log4j.Log4j2;
 import models.Bike;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pages.BikesPage;
 
 @Log4j2
 public class EditBikeModal extends BaseModal {
@@ -23,7 +23,7 @@ public class EditBikeModal extends BaseModal {
     public Bike getBikeDetails() {
         Bike bike = new Bike();
         bike.setBikeName(getValue(BIKE_NAME));
-      //  bike.setBikeBrand(getText(BIKE_BRAND));
+        bike.setBikeBrand(BikeBrand.fromString(getText(BIKE_BRAND)));
         bike.setModel(getValue(BIKE_MODEL));
         bike.setCost(getValue(BIKE_COST));
         bike.setDate(getValue(DATE));

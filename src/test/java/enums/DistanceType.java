@@ -1,11 +1,6 @@
 package enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 
-
-@Getter
-@AllArgsConstructor
 public enum DistanceType {
 
     MI("mi", "mi"),
@@ -16,6 +11,19 @@ public enum DistanceType {
 
     private final String value;
     private final String name;
+
+    DistanceType(String value, String name) {
+        this.value = value;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getValue() {
+        return value;
+    }
 
 
     public static DistanceType fromString(String type) {

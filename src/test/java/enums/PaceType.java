@@ -1,10 +1,5 @@
 package enums;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@Getter
-@AllArgsConstructor
 public enum PaceType {
 
     MIN_MI("mi", "min/mi"),
@@ -17,6 +12,19 @@ public enum PaceType {
 
     private final String value;
     private final String name;
+
+    PaceType(String value, String name) {
+        this.value = value;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getValue() {
+        return value;
+    }
 
     public static PaceType fromString(String type) {
         for (PaceType paceType : PaceType.values()) {

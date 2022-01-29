@@ -1,5 +1,6 @@
 package models;
 
+import enums.BikeBrand;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,7 +16,7 @@ public class Bike {
     String cost;
     String date;
     String distance;
-    String bikeBrand;
+    BikeBrand bikeBrand;
 
 
 }

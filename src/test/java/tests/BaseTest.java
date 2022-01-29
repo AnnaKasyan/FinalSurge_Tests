@@ -41,8 +41,13 @@ public abstract class BaseTest {
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
+        driver.manage().deleteAllCookies();
         log.info("quit from driver");
         driver.quit();
+    }
+
+    public void navigate() {
+        loginPage.open().login(EMAIL, PASSWORD);
     }
 
 }

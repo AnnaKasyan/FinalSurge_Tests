@@ -1,7 +1,7 @@
 package pages;
 
+import elements.DropdownSelectBikeBrand;
 import elements.Input;
-import elements.InputIntoDropdown;
 import lombok.extern.log4j.Log4j2;
 import models.Bike;
 import org.openqa.selenium.By;
@@ -12,10 +12,7 @@ public class BikesPage extends BasePage {
 
     private static final By BIKE_EDIT_FORM = By.id("BikeEditForm");
     private static final By BIKE_NAME = By.id("ShoeName");
-  // private static final By BIKE_BRAND = By.cssSelector(".select2-input");
-    //private static final By BIKE_BRAND_SELECT = By.xpath("//div[contains(@class,'select2-container span12 select2')]");
-   private static final By BIKE_BRAND = By.id("ShoeBrand");
-    private static final By BIKE_BRAND_SELECT = By.xpath("//*[@id='s2id_ShoeBrand']/a");
+    private static final By DROPDOWN_LOCATOR = By.xpath("//*[@id='s2id_ShoeBrand']/a");
 
     private static final By BIKE_MODEL = By.id("ShoeModel");
     private static final By BIKE_COST = By.id("ShoeCost");
@@ -30,7 +27,7 @@ public class BikesPage extends BasePage {
 
     public BikesPage fillForm(Bike bike) {
         new Input(driver).write(BIKE_NAME, bike.getBikeName());
-     //   new InputIntoDropdown(driver).write(BIKE_BRAND,BIKE_BRAND_SELECT, bike.getBikeBrand());
+        new DropdownSelectBikeBrand(driver).selectOption(DROPDOWN_LOCATOR, bike.getBikeBrand().getName());
         new Input(driver).write(BIKE_MODEL, bike.getModel());
         new Input(driver).write(BIKE_COST, bike.getCost());
         new Input(driver).write(DATE, bike.getDate());

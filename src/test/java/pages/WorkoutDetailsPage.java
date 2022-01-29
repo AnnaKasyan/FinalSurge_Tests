@@ -61,7 +61,7 @@ public class WorkoutDetailsPage extends BasePage {
 
     public String getDescription() {
         log.info("getting the actual description of workout");
-       return driver.findElement(ACTUAL_DESCRIPTION).getText().split(":")[1].trim();
+        return driver.findElement(ACTUAL_DESCRIPTION).getText().split(":")[1].trim();
     }
 
     public String getActualDistance() {

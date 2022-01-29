@@ -16,14 +16,14 @@ public class PrintWorkoutsTest extends BaseTest {
     PrintPage printPage;
 
 
-    @BeforeMethod (alwaysRun = true)
-    public void navigate() {
-        loginPage.open().login(EMAIL, PASSWORD);
+    @BeforeMethod(alwaysRun = true)
+    public void initialize() {
+        navigate();
         printWorkoutModal = new PrintWorkoutModal(driver);
         printPage = new PrintPage(driver);
     }
 
-    @AfterMethod (alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         driver.switchTo().defaultContent();
         driver.manage().deleteAllCookies();

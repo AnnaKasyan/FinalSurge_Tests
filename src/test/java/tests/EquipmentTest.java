@@ -2,7 +2,6 @@ package tests;
 
 import modals.EditBikeModal;
 import models.Bike;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BikesPage;
@@ -17,16 +16,12 @@ public class EquipmentTest extends BaseTest {
     protected EditBikeModal editBikeModal;
 
     @BeforeMethod(alwaysRun = true)
-    public void navigate() {
-        loginPage.open().login(EMAIL, PASSWORD);
+    public void initialize() {
+        navigate();
         bikesPage = new BikesPage(driver);
         editBikeModal = new EditBikeModal(driver);
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void tearDown() {
-        driver.manage().deleteAllCookies();
-    }
 
     @Test
     public void addNewBikeTest() {
