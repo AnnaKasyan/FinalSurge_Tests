@@ -1,6 +1,7 @@
 package pages;
 
 import lombok.extern.log4j.Log4j2;
+import modals.CaloricNeedsModal;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -15,7 +16,7 @@ public class HomePage extends BasePage {
     private static final By PRINT_WORKOUTS_LINK = By.xpath("//a[text()='Print Workouts']");
     private static final By GEAR_ROUTES_MENU = By.xpath("//a[text()='Gear & Routes']");
     private static final By BIKES_LINK = By.xpath("//a[text()='Bikes']");
-
+    private static final By OTHER_CALCULATORS_LINK = By.cssSelector("[data-reveal-id='OtherCalc']");
 
     Actions action = new Actions(driver);
 
@@ -60,6 +61,11 @@ public class HomePage extends BasePage {
         moveGearRoutesMenu();
         log.info("clicking 'Bikes' link");
         clickButton(BIKES_LINK);
+    }
+
+    public void clickOtherCalculators() {
+        log.info("clicking 'Other Calculators' link");
+        clickButton(OTHER_CALCULATORS_LINK);
     }
 
     @Override
