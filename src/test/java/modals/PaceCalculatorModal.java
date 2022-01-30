@@ -17,7 +17,6 @@ public class PaceCalculatorModal extends BaseModal {
     private final static By SECONDS = By.id("TimeSS");
     private final static By CALCULATE_PACES_BUTTON = By.id("saveButtonSettings");
     private final static By PACE_CHART_TABLE = By.xpath("//*[@class='w-box-content']/table[contains(@class,'table-condensed table-hover')]");
-    private final static By OTHER_CALCULATOR_FRAME = By.id("OtherCalciFrame");
 
 
     public PaceCalculatorModal(WebDriver driver) {

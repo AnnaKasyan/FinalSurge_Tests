@@ -1,7 +1,7 @@
 package tests;
 
 import modals.PrintWorkoutModal;
-import models.PrintWorkouts;
+import models.DatePeriod;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -33,7 +33,7 @@ public class PrintWorkoutsTest extends BaseTest {
     @Test
     public void printWorkoutsTest() {
         homePage.clickPrintWorkouts();
-        PrintWorkouts periodForPrint = TestDataHelper.getPeriodPrintWorkouts();
+        DatePeriod periodForPrint = TestDataHelper.getDatePeriod();
         printWorkoutModal.fillForm(periodForPrint);
         assertTrue(printPage.isPageOpened());
     }

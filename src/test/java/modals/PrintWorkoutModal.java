@@ -2,7 +2,7 @@ package modals;
 
 import elements.Input;
 import lombok.extern.log4j.Log4j2;
-import models.PrintWorkouts;
+import models.DatePeriod;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -24,7 +24,7 @@ public class PrintWorkoutModal extends BaseModal {
         clickButton(PRINT_WORKOUTS_BUTTON);
     }
 
-    public void fillForm(PrintWorkouts printWorkouts) {
+    public void fillForm(DatePeriod printWorkouts) {
         driver.switchTo().frame(driver.findElement(PRINT_WORKOUTS_IFRAME));
         new Input(driver).write(STARTING_DATE, printWorkouts.getStartDate());
         new Input(driver).write(ENDING_DATE, printWorkouts.getEndDate());

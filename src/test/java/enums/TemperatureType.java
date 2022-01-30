@@ -1,12 +1,12 @@
 package enums;
 
-public enum GenderType {
-    MALE("M"),
-    FEMALE("F");
+public enum TemperatureType {
+    F("F"),
+    C("C");
 
     private final String value;
 
-    GenderType(String value) {
+    TemperatureType(String value) {
         this.value = value;
     }
 

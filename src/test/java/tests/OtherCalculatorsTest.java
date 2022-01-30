@@ -27,10 +27,12 @@ public class OtherCalculatorsTest extends BaseTest {
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
         driver.switchTo().defaultContent();
+        driver.manage().deleteAllCookies();
+        driver.navigate().refresh();
     }
 
     @Test
-    public void calculateCaloricNeedsTest(){
+    public void calculateCaloricNeedsTest() {
         CaloricNeeds form = TestDataHelper.getCaloricNeedInform();
         caloricNeedsModal.fillForm(form)
                 .clickCalculateButton();
@@ -38,7 +40,7 @@ public class OtherCalculatorsTest extends BaseTest {
     }
 
     @Test
-    public void paceCalculatorTest(){
+    public void paceCalculatorTest() {
         PaceCalculator form = TestDataHelper.getPaceCalculatorInform();
         caloricNeedsModal.clickPaceCalculatorButton()
                 .fillForm(form)

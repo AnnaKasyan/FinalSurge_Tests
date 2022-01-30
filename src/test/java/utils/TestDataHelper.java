@@ -26,8 +26,8 @@ public class TestDataHelper {
                 .build();
     }
 
-    public static PrintWorkouts getPeriodPrintWorkouts() {
-        return PrintWorkouts.builder()
+    public static DatePeriod getDatePeriod() {
+        return DatePeriod.builder()
                 .startDate("1/5/2022")
                 .endDate("1/19/2022")
                 .build();
@@ -44,7 +44,7 @@ public class TestDataHelper {
                 .build();
     }
 
-    public static CaloricNeeds getCaloricNeedInform(){
+    public static CaloricNeeds getCaloricNeedInform() {
         return CaloricNeeds.builder()
                 .weightType(WeightType.KG)
                 .heightType(HeightType.CENTIMETERS)
@@ -57,13 +57,54 @@ public class TestDataHelper {
                 .build();
     }
 
-    public static PaceCalculator getPaceCalculatorInform(){
-        return  PaceCalculator.builder()
+    public static PaceCalculator getPaceCalculatorInform() {
+        return PaceCalculator.builder()
                 .distanceType(DistanceType.KM)
                 .distance(String.valueOf(faker.number().numberBetween(1, 9999)))
                 .hours(String.valueOf(faker.number().numberBetween(0, 99)))
                 .minutes(String.valueOf(faker.number().numberBetween(1, 59)))
                 .seconds(String.valueOf(faker.number().numberBetween(1, 59)))
+                .build();
+    }
+
+    public static Report getReportInform() {
+        return Report.builder()
+                .startDate("1/23/2022")
+                .endDate("1/24/2022")
+                .activityType(ActiveType.CROSS_TRAINING)
+                .build();
+    }
+
+    public static WorkoutCalculator getIntesityInform() {
+        return WorkoutCalculator.builder()
+                .event(Event.HALFMAR)
+                .hours(String.valueOf(faker.number().numberBetween(1, 3)))
+                .minutes(String.valueOf(faker.number().numberBetween(1, 59)))
+                .seconds(String.valueOf(faker.number().numberBetween(1, 59)))
+                .build();
+    }
+
+    public static WorkoutCalculator getHansonsInform() {
+        return WorkoutCalculator.builder()
+                .event(Event.MARATHON)
+                .hours(String.valueOf(faker.number().numberBetween(1, 8)))
+                .minutes(String.valueOf(faker.number().numberBetween(1, 59)))
+                .seconds(String.valueOf(faker.number().numberBetween(1, 59)))
+                .temperature(String.valueOf(faker.number().numberBetween(-40, 150)))
+                .temperatureType(TemperatureType.C)
+                .humidity(String.valueOf(faker.number().numberBetween(0, 100)))
+                .windSpeed(String.valueOf(faker.number().numberBetween(0, 99)))
+                .windSpeedType(WindSpeedType.KPH)
+                .build();
+    }
+
+    public static WorkoutCalculator getTinmanInform() {
+        return WorkoutCalculator.builder()
+                .raceDistance(RaceDistance.FIVE_KM)
+                .hours(String.valueOf(faker.number().numberBetween(0, 5)))
+                .minutes(String.valueOf(faker.number().numberBetween(1, 59)))
+                .seconds(String.valueOf(faker.number().numberBetween(1, 59)))
+                .genderType(GenderType.FEMALE)
                 .build();
     }
 

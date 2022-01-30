@@ -1,12 +1,12 @@
 package enums;
 
-public enum GenderType {
-    MALE("M"),
-    FEMALE("F");
+public enum WindSpeedType {
+    MPH("mph"),
+    KPH("kph");
 
     private final String value;
 
-    GenderType(String value) {
+    WindSpeedType(String value) {
         this.value = value;
     }
 
