@@ -27,7 +27,7 @@ public class TinmanCalculatorModal extends BaseModal {
         new Input(driver).write(HOURS, tinmanCalculator.getHours());
         new Input(driver).write(MINUTES, tinmanCalculator.getMinutes());
         new Input(driver).write(SECONDS, tinmanCalculator.getSeconds());
-        new RadioButtonForCalculator(driver).clickRadioButton("Gender", tinmanCalculator.getGenderType().getValue());
+        new RadioButtonForCalculator(driver).clickRadioButton("Gender", tinmanCalculator.getGenderType().getValue().toUpperCase());
         return this;
     }
 

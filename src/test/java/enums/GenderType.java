@@ -1,8 +1,8 @@
 package enums;
 
 public enum GenderType {
-    MALE("M"),
-    FEMALE("F");
+    MALE("m"),
+    FEMALE("f");
 
     private final String value;
 
