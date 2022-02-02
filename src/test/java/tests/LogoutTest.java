@@ -5,17 +5,17 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class LogoutTest extends BaseTest{
+public class LogoutTest extends BaseTest {
 
-    @BeforeMethod
-    public void navigate (){
-        loginPage.open().login(EMAIL,PASSWORD);
+    @BeforeMethod(alwaysRun = true)
+    public void open() {
+        navigate();
     }
 
     @Test
-    public void logoutTest (){
+    public void logoutTest() {
         String expected_message = "You have been successfully logged out of the system.";
         homePage.clickLogoutButton();
-        assertEquals(loginPage.getLogoutMessage(),expected_message);
+        assertEquals(loginPage.getLogoutMessage(), expected_message);
     }
 }

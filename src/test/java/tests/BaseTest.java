@@ -1,6 +1,7 @@
 package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,6 +13,7 @@ import utils.PropertyReader;
 
 import java.util.concurrent.TimeUnit;
 
+@Log4j2
 public abstract class BaseTest {
 
     protected final static String EMAIL = System.getenv().getOrDefault("", PropertyReader.getProperty("finalsurge.username"));
@@ -23,6 +25,7 @@ public abstract class BaseTest {
 
     @BeforeClass(alwaysRun = true)
     public void setUp() {
+        log.info("driver initialization");
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--ignore-certificate-errors");
@@ -38,7 +41,13 @@ public abstract class BaseTest {
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
+        driver.manage().deleteAllCookies();
+        log.info("quit from driver");
         driver.quit();
+    }
+
+    public void navigate() {
+        loginPage.open().login(EMAIL, PASSWORD);
     }
 
 }
