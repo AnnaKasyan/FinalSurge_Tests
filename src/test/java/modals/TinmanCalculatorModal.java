@@ -3,6 +3,7 @@ package modals;
 import elements.DropdownSelectByValue;
 import elements.Input;
 import elements.RadioButtonForCalculator;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.WorkoutCalculator;
 import org.openqa.selenium.By;
@@ -22,6 +23,7 @@ public class TinmanCalculatorModal extends BaseModal {
         super(driver);
     }
 
+    @Step("Filling 'Tinman's running calculator by Tom Schwartz' form")
     public TinmanCalculatorModal fillForm(WorkoutCalculator tinmanCalculator) {
         new DropdownSelectByValue(driver).selectOption(RACE_DISTANCE, tinmanCalculator.getRaceDistance().getValue());
         new Input(driver).write(HOURS, tinmanCalculator.getHours());
@@ -31,12 +33,15 @@ public class TinmanCalculatorModal extends BaseModal {
         return this;
     }
 
+    @Step("Clicking 'Calculate Pace' button")
     public void clickCalculateButton() {
         log.info("clicking 'Calculate Pace' button");
         clickButton(CALCULATE_PACES_BUTTON);
     }
 
+    @Step("Table 'Race Information' is visible")
     public boolean workoutPaceTableIsVisible() {
+        log.info("Table 'Race Information' is visible");
         return driver.findElement(RACE_INFORMATION_TABLE).isDisplayed();
     }
 }

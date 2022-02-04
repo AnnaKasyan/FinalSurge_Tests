@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -12,7 +13,8 @@ public class LogoutTest extends BaseTest {
         navigate();
     }
 
-    @Test
+    @Test(description = "FinalSurge logout positive test")
+    @Description(value = "Logout positive test")
     public void logoutTest() {
         String expected_message = "You have been successfully logged out of the system.";
         homePage.clickLogoutButton();

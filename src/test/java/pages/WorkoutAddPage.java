@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,8 +16,9 @@ public class WorkoutAddPage extends BasePage{
         super(driver);
     }
 
+    @Step("Selecting 'Cross Training' type")
     public void selectCrossTrainingType() {
-        log.info("selecting 'CROSS_TRAINING' type");
+        log.info("selecting 'Cross Training' type");
         clickButton(CROSS_TRAINING_TYPE);
     }
 

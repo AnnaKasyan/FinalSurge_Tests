@@ -2,6 +2,7 @@ package modals;
 
 import elements.Input;
 import elements.RadioButtonForCalculator;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.CaloricNeeds;
 import org.openqa.selenium.By;
@@ -24,6 +25,7 @@ public class CaloricNeedsModal extends BaseModal {
         super(driver);
     }
 
+    @Step("Filling 'Caloric Needs Calculator' form")
     public CaloricNeedsModal fillForm(CaloricNeeds caloricNeeds) {
         driver.switchTo().frame(driver.findElement(OTHER_CALCULATOR_FRAME));
         new RadioButtonForCalculator(driver).clickRadioButton("WeightType", caloricNeeds.getWeightType().getValue());
@@ -37,15 +39,19 @@ public class CaloricNeedsModal extends BaseModal {
         return this;
     }
 
+    @Step("Clicking 'Calculate Caloric Needs' button")
     public void clickCalculateButton() {
         log.info("clicking 'Calculate Caloric Needs' button");
         clickButton(CALCULATE_BUTTON);
     }
 
+    @Step("Table 'Today's caloric needs' is visible")
     public boolean caloricNeedsTableIsVisible (){
+        log.info("Table 'Today's caloric needs' is visible");
         return driver.findElement(CALORIC_NEEDS_TABLE).isDisplayed();
     }
 
+    @Step("Clicking 'Pace Calculator' button")
     public PaceCalculatorModal clickPaceCalculatorButton() {
         driver.switchTo().frame(driver.findElement(OTHER_CALCULATOR_FRAME));
         log.info("clicking 'Pace Calculator' button");

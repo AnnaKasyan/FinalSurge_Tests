@@ -2,6 +2,7 @@ package modals;
 
 import elements.DropdownSelectByValue;
 import elements.Input;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.WorkoutCalculator;
 import org.openqa.selenium.By;
@@ -27,6 +28,7 @@ public class HansonsCalculatorModal extends BaseModal {
         super(driver);
     }
 
+    @Step("Filling 'Hansons Marathon Method pace calculator' form")
     public HansonsCalculatorModal fillForm(WorkoutCalculator hansonsCalculator) {
         new DropdownSelectByValue(driver).selectOption(DISTANCE, hansonsCalculator.getEvent().getName());
         new Input(driver).write(HOURS, hansonsCalculator.getHours());
@@ -40,12 +42,15 @@ public class HansonsCalculatorModal extends BaseModal {
         return this;
     }
 
+    @Step("Clicking 'Calculate Pace' button")
     public void clickCalculateButton() {
         log.info("clicking 'Calculate Pace' button");
         clickButton(CALCULATE_PACES_BUTTON);
     }
 
+    @Step("Table 'Recent Race Information' is visible")
     public boolean recentRaceInformationTableIsVisible() {
+        log.info("Table 'Recent Race Information' is visible");
         return driver.findElement(RECENT_RACE_INFORMATION_TABLE).isDisplayed();
     }
 }

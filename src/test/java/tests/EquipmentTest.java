@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import modals.EditBikeModal;
 import models.Bike;
 import org.testng.annotations.BeforeMethod;
@@ -23,7 +24,8 @@ public class EquipmentTest extends BaseTest {
     }
 
 
-    @Test
+    @Test(description = "Adding 'New bike' equipment and verifying equipment details",groups = {"Smoke"})
+    @Description(value = "Adding 'New bike' equipment and verifying equipment details")
     public void addNewBikeTest() {
         homePage.moveGearRoutesMenu()
                 .clickBikes();

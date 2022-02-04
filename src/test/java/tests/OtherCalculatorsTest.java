@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import modals.CaloricNeedsModal;
 import modals.PaceCalculatorModal;
 import models.CaloricNeeds;
@@ -31,7 +32,8 @@ public class OtherCalculatorsTest extends BaseTest {
         driver.navigate().refresh();
     }
 
-    @Test
+    @Test(description = "Using 'Other Calculators' to calculate daily caloric needs")
+    @Description(value = "Using 'Other Calculators' to calculate daily caloric needs")
     public void calculateCaloricNeedsTest() {
         CaloricNeeds form = TestDataHelper.getCaloricNeedInform();
         caloricNeedsModal.fillForm(form)
@@ -39,7 +41,8 @@ public class OtherCalculatorsTest extends BaseTest {
         assertTrue(caloricNeedsModal.caloricNeedsTableIsVisible());
     }
 
-    @Test
+    @Test(description = "Using 'Other Calculators' to calculate pace")
+    @Description(value = "Using 'Other Calculators' to calculate pace")
     public void paceCalculatorTest() {
         PaceCalculator form = TestDataHelper.getPaceCalculatorInform();
         caloricNeedsModal.clickPaceCalculatorButton()

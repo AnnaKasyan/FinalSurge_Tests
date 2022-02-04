@@ -2,6 +2,7 @@ package pages;
 
 import elements.DropdownSelectByName;
 import elements.Input;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.Report;
 import org.openqa.selenium.By;
@@ -21,6 +22,7 @@ public class WorkoutReportPage extends BasePage {
         super(driver);
     }
 
+    @Step("Filling 'Report Filters' form")
     public WorkoutReportPage fillForm(Report report) {
         new Input(driver).clear(STARTING_DATE);
         new Input(driver).write(STARTING_DATE, report.getStartDate());
@@ -30,12 +32,15 @@ public class WorkoutReportPage extends BasePage {
         return this;
     }
 
+    @Step("Clicking 'View Report' button")
     public void clickViewReportButton() {
         log.info("clicking 'View Report' button");
         clickButton(VIEW_REPORT_BUTTON);
     }
 
+    @Step("Getting data from the actions column in the results table")
     public String getActivityFromTable() {
+        log.info("getting data from the actions column in the results table");
         return driver.findElement(ACTIVITY_COLUMN_OF_TABLE).getText();
     }
 

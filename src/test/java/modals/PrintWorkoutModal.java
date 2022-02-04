@@ -1,6 +1,7 @@
 package modals;
 
 import elements.Input;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.DatePeriod;
 import org.openqa.selenium.By;
@@ -19,11 +20,13 @@ public class PrintWorkoutModal extends BaseModal {
         super(driver);
     }
 
+    @Step("Clicking 'Print Workouts' button")
     public void clickPrintWorkoutsButton() {
         log.info("clicking 'Print Workouts' button");
         clickButton(PRINT_WORKOUTS_BUTTON);
     }
 
+    @Step("Filling 'Print Workouts' form")
     public void fillForm(DatePeriod printWorkouts) {
         driver.switchTo().frame(driver.findElement(PRINT_WORKOUTS_IFRAME));
         new Input(driver).write(STARTING_DATE, printWorkouts.getStartDate());

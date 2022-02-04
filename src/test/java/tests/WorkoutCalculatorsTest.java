@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import modals.HansonsCalculatorModal;
 import modals.IntensityCalculatorModal;
 import modals.TinmanCalculatorModal;
@@ -31,7 +32,8 @@ public class WorkoutCalculatorsTest extends BaseTest {
         driver.navigate().refresh();
     }
 
-    @Test
+    @Test(description = "Using 'Workout Calculators' to calculate the intensity of a running workout")
+    @Description(value = "Using 'Workout Calculators' to calculate the intensity of a running workout")
     public void calculateIntensityTest() {
         WorkoutCalculator intensityForm = TestDataHelper.getIntesityInform();
         homePage.clickWorkoutCalculators()
@@ -40,7 +42,8 @@ public class WorkoutCalculatorsTest extends BaseTest {
         assertTrue(intensityCalculatorModal.workoutPaceTableIsVisible());
     }
 
-    @Test
+    @Test(description = "Using 'Workout Calculators' to calculate Tinman's running by Tom Schwartz")
+    @Description(value = "Using 'Workout Calculators' to calculate Tinman's running by Tom Schwartz")
     public void calculateTinmanTest() {
         WorkoutCalculator tinmanForm = TestDataHelper.getTinmanInform();
         homePage.clickWorkoutCalculators()
@@ -50,7 +53,8 @@ public class WorkoutCalculatorsTest extends BaseTest {
         assertTrue(tinmanCalculatorModal.workoutPaceTableIsVisible());
     }
 
-    @Test
+    @Test(description = "Using 'Workout Calculators' to calculate the pace of Hanson's marathon method")
+    @Description(value = "Using 'Workout Calculators' to calculate the pace of Hanson's marathon method")
     public void calculateHansonsTest() {
         WorkoutCalculator hansonForm = TestDataHelper.getHansonsInform();
         homePage.clickWorkoutCalculators()

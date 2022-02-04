@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import modals.PrintWorkoutModal;
 import models.DatePeriod;
 import org.testng.annotations.AfterMethod;
@@ -30,7 +31,8 @@ public class PrintWorkoutsTest extends BaseTest {
     }
 
 
-    @Test
+    @Test(description = "Opening print page with workouts for the selected time period")
+    @Description(value = "Opening print page with workouts for the selected time period")
     public void printWorkoutsTest() {
         homePage.clickPrintWorkouts();
         DatePeriod periodForPrint = TestDataHelper.getDatePeriod();

@@ -1,6 +1,7 @@
 package modals;
 
 import elements.Input;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.DatePeriod;
 import org.openqa.selenium.By;
@@ -17,6 +18,7 @@ public class CustomViewModal extends BaseModal {
         super(driver);
     }
 
+    @Step("Filling 'Custom View' form")
     public CustomViewModal fillForm(DatePeriod customView) {
         new Input(driver).clear(STARTING_DATE);
         new Input(driver).write(STARTING_DATE, customView.getStartDate());
@@ -25,6 +27,7 @@ public class CustomViewModal extends BaseModal {
         return this;
     }
 
+    @Step("Clicking 'View' button")
     public void clickViewButton() {
         log.info("clicking 'View' button");
         clickButton(VIEW_BUTTON);
