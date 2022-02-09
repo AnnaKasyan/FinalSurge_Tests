@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" name="Smoke" parallel="classes">
+    <test name="Login and WorkoutReport tests">
+    <classes>
+        <class name="tests.LoginTest"/>
+        <class name="tests.WorkoutReportTest"/>
+    </classes>
+</test> <!-- Test -->
+    <test name="AddWorkout and Equipment tests">
+        <classes>
+            <class name="tests.AddWorkoutTest"/>
+            <class name="tests.EquipmentTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite>

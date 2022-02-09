@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -20,13 +21,15 @@ public class LoginTest extends BaseTest {
         driver.navigate().refresh();
     }
 
-    @Test
+    @Test(description = "FinalSurge login positive test", groups = {"Smoke"})
+    @Description(value = "Login positive test")
     public void positiveLoginTest() {
         loginPage.login(EMAIL, PASSWORD);
         assertTrue(homePage.isPageOpened());
     }
 
-    @Test(dataProvider = "Negative Login Test Data")
+    @Test(description = "FinalSurge login negative test", groups = {"Negative"}, dataProvider = "Negative Login Test Data")
+    @Description(value = "Login negative test with 3 various test data")
     public void negativeLoginTest(String email, String password) {
         loginPage.login(email, password);
         assertTrue(loginPage.isPageOpened());

@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import modals.CustomViewModal;
 import org.openqa.selenium.By;
@@ -15,13 +16,16 @@ public class DailyVitalsPage extends BasePage {
         super(driver);
     }
 
+    @Step("Clicking 'Custom View' link")
     public CustomViewModal clickCustomView() {
         log.info("clicking 'Custom View' link");
         clickButton(CUSTOM_VIEW);
         return new CustomViewModal(driver);
     }
 
+    @Step("Getting the latest date in the results table")
     public String getLastDateInTable() {
+        log.info("getting the latest date in the results table");
         return driver.findElement(LAST_DATE_IN_TABLE).getText();
     }
 

@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,27 +18,32 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    @Step("Setting email value: {email}")
     public void setEmailInput(String email) {
         log.info("setting email");
         driver.findElement(EMAIL_INPUT).sendKeys(email);
     }
 
+    @Step("Setting password value: {password}")
     public void setPasswordInput(String password) {
         log.info("setting password");
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
     }
 
+    @Step("Clicking 'Login' button")
     public void clickLoginButton() {
         log.info("clicking 'Login' button");
         clickButton(LOGIN_BUTTON);
     }
 
+    @Step("Login to Finalsurge.com with username {username} and password {password}")
     public void login(String email, String password) {
         setEmailInput(email);
         setPasswordInput(password);
         clickLoginButton();
     }
 
+    @Step("Getting message about successfully logged out of the system")
     public String getLogoutMessage() {
         log.info("getting message about successfully logged out of the system");
         return driver.findElement(ACCOUNT_LOGOUT_MESSAGE).getText();

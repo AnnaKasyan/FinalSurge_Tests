@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import modals.AddNewWorkoutModal;
 import models.Workout;
 import org.testng.annotations.BeforeMethod;
@@ -26,7 +27,8 @@ public class AddWorkoutTest extends BaseTest {
         addNewWorkoutModal = new AddNewWorkoutModal(driver);
     }
 
-    @Test
+    @Test(description = "Adding 'Cross Training' workout and verifying workout details", groups = {"Smoke"})
+    @Description(value = "Adding 'Cross Training' workout and verifying workout details")
     public void addCrossTrainingTest() {
         homePage.clickAddWorkout();
         assertTrue(workoutAddPage.isPageOpened());

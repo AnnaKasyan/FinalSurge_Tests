@@ -1,18 +1,22 @@
 package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import pages.HomePage;
 import pages.LoginPage;
 import utils.PropertyReader;
+import utils.TestListener;
 
 import java.util.concurrent.TimeUnit;
 
+@Listeners(TestListener.class)
 @Log4j2
 public abstract class BaseTest {
 
@@ -24,6 +28,7 @@ public abstract class BaseTest {
 
 
     @BeforeClass(alwaysRun = true)
+    @Step("Opening browser")
     public void setUp() {
         log.info("driver initialization");
         WebDriverManager.chromedriver().setup();
@@ -40,6 +45,7 @@ public abstract class BaseTest {
     }
 
     @AfterClass(alwaysRun = true)
+    @Step("Closing browser")
     public void tearDown() {
         driver.manage().deleteAllCookies();
         log.info("quit from driver");

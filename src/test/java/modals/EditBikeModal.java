@@ -1,6 +1,7 @@
 package modals;
 
 import enums.BikeBrand;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.Bike;
 import org.openqa.selenium.By;
@@ -20,6 +21,7 @@ public class EditBikeModal extends BaseModal {
         super(driver);
     }
 
+    @Step("Getting 'Bike' equipment details")
     public Bike getBikeDetails() {
         Bike bike = new Bike();
         bike.setBikeName(getValue(BIKE_NAME));

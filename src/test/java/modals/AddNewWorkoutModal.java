@@ -3,6 +3,7 @@ package modals;
 import elements.DropdownSelectByValue;
 import elements.Input;
 import elements.RadioButton;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.Workout;
 import org.openqa.selenium.By;
@@ -30,7 +31,7 @@ public class AddNewWorkoutModal extends BaseModal {
         super(driver);
     }
 
-
+    @Step("Filling 'New workout' form")
     public AddNewWorkoutModal fillForm(Workout workout) {
         new Input(driver).write(TIME, workout.getTimeOfDay());
         new Input(driver).write(NAME, workout.getName());
@@ -49,6 +50,7 @@ public class AddNewWorkoutModal extends BaseModal {
         return this;
     }
 
+    @Step("Clicking 'Add Workout' button")
     public void clickAddWorkoutButton() {
         log.info("clicking 'Add Workout' button");
         clickButton(ADD_WORKOUT_BUTTON);

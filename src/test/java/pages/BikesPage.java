@@ -2,6 +2,7 @@ package pages;
 
 import elements.DropdownSelectBikeBrand;
 import elements.Input;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.Bike;
 import org.openqa.selenium.By;
@@ -25,6 +26,7 @@ public class BikesPage extends BasePage {
         super(driver);
     }
 
+    @Step("Filling 'New Bike' form")
     public BikesPage fillForm(Bike bike) {
         new Input(driver).write(BIKE_NAME, bike.getBikeName());
         new DropdownSelectBikeBrand(driver).selectOption(DROPDOWN_LOCATOR, bike.getBikeBrand().getName());
@@ -36,12 +38,14 @@ public class BikesPage extends BasePage {
         return this;
     }
 
+    @Step("Clicking 'Add Bike' button")
     public BikesPage clickAddBikeButton() {
         log.info("clicking 'Add Bike' button");
         clickButton(ADD_BIKE_BUTTON);
         return this;
     }
 
+    @Step("Clicking name of new bike")
     public void clickBikeName(String name) {
         log.info("clicking name of new bike");
         String nameOfCurrentBikes = "//a[text()='%s']";

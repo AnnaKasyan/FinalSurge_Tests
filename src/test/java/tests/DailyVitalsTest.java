@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import modals.CustomViewModal;
 import models.DatePeriod;
 import org.testng.annotations.BeforeMethod;
@@ -22,7 +23,8 @@ public class DailyVitalsTest extends BaseTest {
         customViewModal = new CustomViewModal(driver);
     }
 
-    @Test
+    @Test(description = "Displaying daily vitals for the selected time period")
+    @Description(value = "Displaying daily vitals for the selected time period")
     public void viewVitalsTest() {
         DatePeriod periodForView = TestDataHelper.getDatePeriod();
         dailyVitalsPage.clickCustomView()

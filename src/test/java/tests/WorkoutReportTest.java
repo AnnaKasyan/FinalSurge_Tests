@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import models.Report;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -19,7 +20,8 @@ public class WorkoutReportTest extends BaseTest {
         workoutReportPage = new WorkoutReportPage(driver);
     }
 
-    @Test
+    @Test(description = "Reporting on workouts of the selected type for the selected period",groups = {"Smoke"})
+    @Description(value = "Reporting on workouts of the selected type for the selected period")
     public void reportWorkoutTest() {
         homePage.clickReportsAndStatistics();
         assertTrue(workoutReportPage.isPageOpened());

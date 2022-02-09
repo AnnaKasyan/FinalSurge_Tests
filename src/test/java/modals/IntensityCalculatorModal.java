@@ -2,6 +2,7 @@ package modals;
 
 import elements.Input;
 import elements.RadioButtonForCalculator;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.WorkoutCalculator;
 import org.openqa.selenium.By;
@@ -24,6 +25,7 @@ public class IntensityCalculatorModal extends BaseModal {
         super(driver);
     }
 
+    @Step("Filling 'Running workout intensity calculator' form")
     public IntensityCalculatorModal fillForm(WorkoutCalculator intensityCalculator) {
         driver.switchTo().frame(driver.findElement(WORKOUT_CALCULATORS_IFRAME));
         new RadioButtonForCalculator(driver).clickRadioButton("EventType", intensityCalculator.getEvent().getValue());
@@ -33,23 +35,30 @@ public class IntensityCalculatorModal extends BaseModal {
         return this;
     }
 
+    @Step("Clicking 'Calculate Pace' button")
     public void clickCalculateButton() {
         log.info("clicking 'Calculate Pace' button");
         clickButton(CALCULATE_PACES_BUTTON);
     }
 
+    @Step("Table 'Your Workout Paces' is visible")
     public boolean workoutPaceTableIsVisible() {
+        log.info("Table 'Your Workout Paces' is visible");
         return driver.findElement(WORKOUT_PACES_TABLE).isDisplayed();
     }
 
+    @Step("Opening Hanson calculator")
     public HansonsCalculatorModal openHansonCalculator() {
         driver.switchTo().frame(driver.findElement(WORKOUT_CALCULATORS_IFRAME));
+        log.info("clicking 'Hansons' button");
         clickButton(HANSONS_FORM);
         return new HansonsCalculatorModal(driver);
     }
 
+    @Step("Opening Tinman calculator")
     public TinmanCalculatorModal openTinmanCalculator() {
         driver.switchTo().frame(driver.findElement(WORKOUT_CALCULATORS_IFRAME));
+        log.info("clicking 'Tinman' button");
         clickButton(TINMAN_FORM);
         return new TinmanCalculatorModal(driver);
     }
