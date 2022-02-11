@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression">
+    <groups>
+        <run>
+            <include name="Regression"/>
+        </run>
+    </groups>
+    <parameter name="browser" value="chrome"/>
+    <test name="All tests without Smoke and Negative">
+        <classes>
+            <class name="tests.LogoutTest"/>
+            <class name="tests.DailyVitalsTest"/>
+            <class name="tests.OtherCalculatorsTest"/>
+            <class name="tests.PrintWorkoutsTest"/>
+            <class name="tests.WorkoutCalculatorsTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite>
+

@@ -36,7 +36,7 @@ public class LoginPage extends BasePage {
         clickButton(LOGIN_BUTTON);
     }
 
-    @Step("Login to Finalsurge.com with username {username} and password {password}")
+    @Step("Login to Finalsurge.com with username {email} and password {password}")
     public void login(String email, String password) {
         setEmailInput(email);
         setPasswordInput(password);

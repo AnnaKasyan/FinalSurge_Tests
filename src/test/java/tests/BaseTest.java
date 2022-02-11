@@ -1,16 +1,13 @@
 package tests;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
 import pages.HomePage;
 import pages.LoginPage;
+import utils.DriverFactory;
 import utils.PropertyReader;
 import utils.TestListener;
 
@@ -27,16 +24,14 @@ public abstract class BaseTest {
     protected HomePage homePage;
 
 
+    @Parameters({"browser"})
     @BeforeClass(alwaysRun = true)
     @Step("Opening browser")
-    public void setUp() {
+    public void setUp(ITestContext testContext, @Optional("chrome") String browser) {
         log.info("driver initialization");
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--ignore-certificate-errors");
-        options.addArguments("--disable-popup-blocking");
-        options.addArguments("--disable-notifications");
-        driver = new ChromeDriver(options);
+        System.getProperty("browser");
+        driver = DriverFactory.getDriver(browser);
+        testContext.setAttribute("driver", driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);

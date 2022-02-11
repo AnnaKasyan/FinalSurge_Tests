@@ -32,7 +32,7 @@ public class OtherCalculatorsTest extends BaseTest {
         driver.navigate().refresh();
     }
 
-    @Test(description = "Using 'Other Calculators' to calculate daily caloric needs")
+    @Test(description = "Using 'Other Calculators' to calculate daily caloric needs",groups = {"Regression"})
     @Description(value = "Using 'Other Calculators' to calculate daily caloric needs")
     public void calculateCaloricNeedsTest() {
         CaloricNeeds form = TestDataHelper.getCaloricNeedInform();
@@ -41,7 +41,7 @@ public class OtherCalculatorsTest extends BaseTest {
         assertTrue(caloricNeedsModal.caloricNeedsTableIsVisible());
     }
 
-    @Test(description = "Using 'Other Calculators' to calculate pace")
+    @Test(description = "Using 'Other Calculators' to calculate pace",groups = {"Regression"})
     @Description(value = "Using 'Other Calculators' to calculate pace")
     public void paceCalculatorTest() {
         PaceCalculator form = TestDataHelper.getPaceCalculatorInform();
