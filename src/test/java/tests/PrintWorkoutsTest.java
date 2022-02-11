@@ -31,7 +31,7 @@ public class PrintWorkoutsTest extends BaseTest {
     }
 
 
-    @Test(description = "Opening print page with workouts for the selected time period")
+    @Test(description = "Opening print page with workouts for the selected time period",groups = {"Regression"})
     @Description(value = "Opening print page with workouts for the selected time period")
     public void printWorkoutsTest() {
         homePage.clickPrintWorkouts();

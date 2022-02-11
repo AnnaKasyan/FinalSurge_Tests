@@ -23,7 +23,7 @@ public class DailyVitalsTest extends BaseTest {
         customViewModal = new CustomViewModal(driver);
     }
 
-    @Test(description = "Displaying daily vitals for the selected time period")
+    @Test(description = "Displaying daily vitals for the selected time period",groups = {"Regression"})
     @Description(value = "Displaying daily vitals for the selected time period")
     public void viewVitalsTest() {
         DatePeriod periodForView = TestDataHelper.getDatePeriod();

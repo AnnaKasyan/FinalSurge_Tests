@@ -32,7 +32,7 @@ public class WorkoutCalculatorsTest extends BaseTest {
         driver.navigate().refresh();
     }
 
-    @Test(description = "Using 'Workout Calculators' to calculate the intensity of a running workout")
+    @Test(description = "Using 'Workout Calculators' to calculate the intensity of a running workout",groups = {"Regression"})
     @Description(value = "Using 'Workout Calculators' to calculate the intensity of a running workout")
     public void calculateIntensityTest() {
         WorkoutCalculator intensityForm = TestDataHelper.getIntesityInform();
@@ -42,7 +42,7 @@ public class WorkoutCalculatorsTest extends BaseTest {
         assertTrue(intensityCalculatorModal.workoutPaceTableIsVisible());
     }
 
-    @Test(description = "Using 'Workout Calculators' to calculate Tinman's running by Tom Schwartz")
+    @Test(description = "Using 'Workout Calculators' to calculate Tinman's running by Tom Schwartz",groups = {"Regression"})
     @Description(value = "Using 'Workout Calculators' to calculate Tinman's running by Tom Schwartz")
     public void calculateTinmanTest() {
         WorkoutCalculator tinmanForm = TestDataHelper.getTinmanInform();
@@ -53,7 +53,7 @@ public class WorkoutCalculatorsTest extends BaseTest {
         assertTrue(tinmanCalculatorModal.workoutPaceTableIsVisible());
     }
 
-    @Test(description = "Using 'Workout Calculators' to calculate the pace of Hanson's marathon method")
+    @Test(description = "Using 'Workout Calculators' to calculate the pace of Hanson's marathon method",groups = {"Regression"})
     @Description(value = "Using 'Workout Calculators' to calculate the pace of Hanson's marathon method")
     public void calculateHansonsTest() {
         WorkoutCalculator hansonForm = TestDataHelper.getHansonsInform();

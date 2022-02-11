@@ -13,7 +13,7 @@ public class LogoutTest extends BaseTest {
         navigate();
     }
 
-    @Test(description = "FinalSurge logout positive test")
+    @Test(description = "FinalSurge logout positive test",groups = {"Regression"})
     @Description(value = "Logout positive test")
     public void logoutTest() {
         String expected_message = "You have been successfully logged out of the system.";
