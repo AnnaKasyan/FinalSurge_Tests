@@ -17,8 +17,8 @@ import java.util.concurrent.TimeUnit;
 @Log4j2
 public abstract class BaseTest {
 
-    protected final static String EMAIL = System.getenv().getOrDefault("USERNAME", PropertyReader.getProperty("finalsurge.username"));
-    protected final static String PASSWORD = System.getenv().getOrDefault("PASSWORD", PropertyReader.getProperty("finalsurge.password"));
+    protected final static String EMAIL = System.getenv().getOrDefault("FINALSURGE_USERNAME", PropertyReader.getProperty("finalsurge.username"));
+    protected final static String PASSWORD = System.getenv().getOrDefault("FINALSURGE_PASSWORD", PropertyReader.getProperty("finalsurge.password"));
     protected WebDriver driver;
     protected LoginPage loginPage;
     protected HomePage homePage;
