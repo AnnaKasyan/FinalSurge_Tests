@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="2" name="Smoke" parallel="classes">
-    <test name="Login and WorkoutReport tests">
-    <classes>
-        <class name="tests.LoginTest"/>
-        <class name="tests.WorkoutReportTest"/>
-    </classes>
-</test> <!-- Test -->
-    <test name="AddWorkout and Equipment tests">
+    <groups>
+        <run>
+            <include name="Smoke"/>
+        </run>
+    </groups>
+    <parameter name="browser" value="chrome"/>
+    <test name="Login, AddWorkout, Equipment  and WorkoutReport tests">
         <classes>
+            <class name="tests.LoginTest"/>
             <class name="tests.AddWorkoutTest"/>
             <class name="tests.EquipmentTest"/>
+            <class name="tests.WorkoutReportTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>
+
