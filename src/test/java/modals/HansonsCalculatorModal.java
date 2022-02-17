@@ -1,6 +1,6 @@
 package modals;
 
-import elements.DropdownSelectByValue;
+import elements.Dropdown;
 import elements.Input;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
@@ -30,12 +30,12 @@ public class HansonsCalculatorModal extends BaseModal {
 
     @Step("Filling 'Hansons Marathon Method pace calculator' form")
     public HansonsCalculatorModal fillForm(WorkoutCalculator hansonsCalculator) {
-        new DropdownSelectByValue(driver).selectOption(DISTANCE, hansonsCalculator.getEvent().getName());
+        new Dropdown(driver).selectOptionByValue(DISTANCE, hansonsCalculator.getEvent().getName());
         new Input(driver).write(HOURS, hansonsCalculator.getHours());
         new Input(driver).write(MINUTES, hansonsCalculator.getMinutes());
         new Input(driver).write(SECONDS, hansonsCalculator.getSeconds());
-        new DropdownSelectByValue(driver).selectOption(TEMPERATURE_TYPE, hansonsCalculator.getTemperatureType().getValue());
-        new DropdownSelectByValue(driver).selectOption(WIND_SPEED_TYPE, hansonsCalculator.getWindSpeedType().getValue());
+        new Dropdown(driver).selectOptionByValue(TEMPERATURE_TYPE, hansonsCalculator.getTemperatureType().getValue());
+        new Dropdown(driver).selectOptionByValue(WIND_SPEED_TYPE, hansonsCalculator.getWindSpeedType().getValue());
         new Input(driver).write(TEMPERATURE, hansonsCalculator.getTemperature());
         new Input(driver).write(HUMIDITY, hansonsCalculator.getHumidity());
         new Input(driver).write(WIND_SPEED, hansonsCalculator.getWindSpeed());

@@ -1,6 +1,6 @@
 package pages;
 
-import elements.DropdownSelectByName;
+import elements.Dropdown;
 import elements.Input;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
@@ -28,7 +28,7 @@ public class WorkoutReportPage extends BasePage {
         new Input(driver).write(STARTING_DATE, report.getStartDate());
         new Input(driver).clear(ENDING_DATE);
         new Input(driver).write(ENDING_DATE, report.getEndDate());
-        new DropdownSelectByName(driver).selectOption(ACTIVITY_TYPE, report.getActivityType().getName());
+        new Dropdown(driver).selectOptionByVisibleText(ACTIVITY_TYPE, report.getActivityType().getName());
         return this;
     }
 

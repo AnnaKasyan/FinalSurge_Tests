@@ -1,6 +1,6 @@
 package modals;
 
-import elements.DropdownSelectByValue;
+import elements.Dropdown;
 import elements.Input;
 import elements.RadioButton;
 import io.qameta.allure.Step;
@@ -37,12 +37,12 @@ public class AddNewWorkoutModal extends BaseModal {
         new Input(driver).write(NAME, workout.getName());
         new Input(driver).write(DESCRIPTION, workout.getDescription());
         new Input(driver).write(DISTANCE, workout.getDistance());
-        new DropdownSelectByValue(driver).selectOption(DISTANCE_TYPE_SELECT, workout.getDistanceType().getValue());
+        new Dropdown(driver).selectOptionByValue(DISTANCE_TYPE_SELECT, workout.getDistanceType().getValue());
         new Input(driver).write(DURATION, workout.getDuration());
-        new DropdownSelectByValue(driver).selectOption(PACE_TYPE_SELECT, workout.getPaceType().getValue());
+        new Dropdown(driver).selectOptionByValue(PACE_TYPE_SELECT, workout.getPaceType().getValue());
         new RadioButton(driver).clickRadioButton(workout.getFeeling().getName());
         new RadioButton(driver).clickRadioButton(workout.getFeeling().getName());
-        new DropdownSelectByValue(driver).selectOption(PERCEIVED_EFFORT_SELECT, workout.getPerceivedEffort().getValue());
+        new Dropdown(driver).selectOptionByValue(PERCEIVED_EFFORT_SELECT, workout.getPerceivedEffort().getValue());
         new Input(driver).write(MIN_HR, workout.getMinHR());
         new Input(driver).write(AVG_HR, workout.getAvgHR());
         new Input(driver).write(MAX_HR, workout.getMaxHR());

@@ -8,7 +8,6 @@ public abstract class BasePage {
     protected static final String BASE_URl = "https://log.finalsurge.com";
     WebDriver driver;
 
-
     public BasePage(WebDriver driver) {
         this.driver = driver;
     }

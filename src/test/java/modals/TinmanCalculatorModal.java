@@ -1,6 +1,6 @@
 package modals;
 
-import elements.DropdownSelectByValue;
+import elements.Dropdown;
 import elements.Input;
 import elements.RadioButtonForCalculator;
 import io.qameta.allure.Step;
@@ -25,7 +25,7 @@ public class TinmanCalculatorModal extends BaseModal {
 
     @Step("Filling 'Tinman's running calculator by Tom Schwartz' form")
     public TinmanCalculatorModal fillForm(WorkoutCalculator tinmanCalculator) {
-        new DropdownSelectByValue(driver).selectOption(RACE_DISTANCE, tinmanCalculator.getRaceDistance().getValue());
+        new Dropdown(driver).selectOptionByValue(RACE_DISTANCE, tinmanCalculator.getRaceDistance().getValue());
         new Input(driver).write(HOURS, tinmanCalculator.getHours());
         new Input(driver).write(MINUTES, tinmanCalculator.getMinutes());
         new Input(driver).write(SECONDS, tinmanCalculator.getSeconds());
