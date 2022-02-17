@@ -40,7 +40,7 @@ public abstract class BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 30);
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
     }
