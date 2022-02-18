@@ -5,7 +5,6 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.Bike;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -29,7 +28,7 @@ public class BikesPage extends BasePage {
     @Step("Filling 'New Bike' form")
     public BikesPage fillForm(Bike bike) {
         new Input(driver).write(BIKE_NAME, bike.getBikeName());
-        selectBikeBrand(DROPDOWN_LOCATOR, bike.getBikeBrand().getName());
+        selectBikeBrand(bike.getBikeBrand().getName());
         new Input(driver).write(BIKE_MODEL, bike.getModel());
         new Input(driver).write(BIKE_COST, bike.getCost());
         new Input(driver).write(DATE, bike.getDate());
@@ -38,11 +37,11 @@ public class BikesPage extends BasePage {
         return this;
     }
 
-    public void selectBikeBrand(By dropdownLocator, String optionName) {
+    public void selectBikeBrand(String optionName) {
         log.info(String.format("selecting bike brand option %s", optionName));
-        driver.findElement(dropdownLocator).click();
+        driver.findElement(DROPDOWN_LOCATOR).click();
         WebElement optionToClick = driver.findElement(By.xpath(String.format(bikeBrandLocator, optionName)));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", optionToClick);
+        scrollIntoView(optionToClick);
         optionToClick.click();
     }
 
