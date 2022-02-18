@@ -2,7 +2,10 @@ package tests;
 
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import pages.HomePage;
@@ -19,7 +22,9 @@ public abstract class BaseTest {
 
     protected final static String EMAIL = System.getenv().getOrDefault("FINALSURGE_USERNAME", PropertyReader.getProperty("finalsurge.username"));
     protected final static String PASSWORD = System.getenv().getOrDefault("FINALSURGE_PASSWORD", PropertyReader.getProperty("finalsurge.password"));
+    private static final By USER_IMAGE = By.id("LayoutProfilePic");
     protected WebDriver driver;
+    protected WebDriverWait wait;
     protected LoginPage loginPage;
     protected HomePage homePage;
 
@@ -35,6 +40,7 @@ public abstract class BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+        wait = new WebDriverWait(driver, 30);
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
     }
@@ -49,6 +55,6 @@ public abstract class BaseTest {
 
     public void navigate() {
         loginPage.open().login(EMAIL, PASSWORD);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(USER_IMAGE));
     }
-
 }

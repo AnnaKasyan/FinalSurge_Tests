@@ -1,6 +1,6 @@
 package modals;
 
-import elements.DropdownSelectByValue;
+import elements.Dropdown;
 import elements.Input;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
@@ -26,7 +26,7 @@ public class PaceCalculatorModal extends BaseModal {
 
     @Step("Filling 'Pace Calculator' form")
     public PaceCalculatorModal fillForm(PaceCalculator paceCalculator) {
-        new DropdownSelectByValue(driver).selectOption(DISTANCE_TYPE, paceCalculator.getDistanceType().getValue());
+        new Dropdown(driver).selectOptionByValue(DISTANCE_TYPE, paceCalculator.getDistanceType().getValue());
         new Input(driver).write(DISTANCE, paceCalculator.getDistance());
         new Input(driver).write(HOURS, paceCalculator.getHours());
         new Input(driver).write(MINUTES, paceCalculator.getMinutes());
